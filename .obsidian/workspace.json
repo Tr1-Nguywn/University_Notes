@@ -1,0 +1,255 @@
+{
+  "main": {
+    "id": "8d28ef76fa091a53",
+    "type": "split",
+    "children": [
+      {
+        "id": "17fc5e34110d923f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "92ff1c1cf97c06bd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Uni Notes/SwinburneCS/2026 semester 1/COS20031_Database_Design_Project/Lecture_3-8_Relational_Database_Design_Foundations_to_Queries.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lecture_3-8_Relational_Database_Design_Foundations_to_Queries"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "2f009679d38efccc",
+    "type": "split",
+    "children": [
+      {
+        "id": "4d53c6aa9e427537",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5b564e45b00f2823",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          },
+          {
+            "id": "718c50a3ac875f65",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 299.5,
+    "collapsed": true
+  },
+  "right": {
+    "id": "a25a8b6bc89da329",
+    "type": "split",
+    "children": [
+      {
+        "id": "70a9ab36345598e6",
+        "type": "tabs",
+        "dimension": 48.226950354609926,
+        "children": [
+          {
+            "id": "58f0408f597fd013",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Uni Notes/SwinburneCS/2026 semester 1/COS10022-Data Science Principles/Lecture 3.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Lecture 3"
+            }
+          },
+          {
+            "id": "d047b46d832e5b36",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "aea83cd2522e6745",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "dd83287756398686",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "257ff090c98089a6",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Uni Notes/SwinburneCS/2026 semester 1/COS20031_Database_Design_Project/Lecture_3-8_Relational_Database_Design_Foundations_to_Queries.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Lecture_3-8_Relational_Database_Design_Foundations_to_Queries"
+            }
+          },
+          {
+            "id": "57ab46bdde1965c4",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          }
+        ],
+        "currentTab": 5
+      },
+      {
+        "id": "782287563c09c7b1",
+        "type": "tabs",
+        "dimension": 51.77304964539007,
+        "children": [
+          {
+            "id": "7ad7b8382fba4de9",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 367
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "obsidian-git:Open Git source control": false
+    }
+  },
+  "active": "92ff1c1cf97c06bd",
+  "lastOpenFiles": [
+    "Pasted image 20260505142006.png",
+    "Pasted image 20260505141837 1.png",
+    "Pasted image 20260505141837.png",
+    "Pasted image 20260505140723.png",
+    "Pasted image 20260505140521.png",
+    "Pasted image 20260505135840.png",
+    "Pasted image 20260505135813.png",
+    "Pasted image 20260505135606.png",
+    "Pasted image 20260505135324.png",
+    "Uni Notes/SwinburneCS/2026 semester 1/COS10022_Data_Science_Principles/Lecture_5_Decision_Trees_Ensemble_Learning_and_Random_Forest.md",
+    "Uni Notes/SwinburneCS/2026 semester 1/COS20031_Database_Design_Project/Lecture_3-8_Relational_Database_Design_Foundations_to_Queries.md",
+    "Uni Notes/SwinburneCS/2026 semester 1/COS10022_Data_Science_Principles/Untitled.md",
+    "Uni Notes/SwinburneCS/2026 semester 1/COS10022_Data_Science_Principles/Lecture_4_Naive_Bayes_Classifier_and_Model_Evaluation.md",
+    "Uni Notes/SwinburneCS/2026 semester 1/COS10022_Data_Science_Principles/Untitled 1.md",
+    "Uni Notes/SwinburneCS/2026 semester 1/COS30045_Data_Visualisation/Lecture_9_Design_Validation_and_Usability_Evaluation.md",
+    "Uni Notes/SwinburneCS/2026 semester 1/COS20031_Database_Design_Project",
+    "Uni Notes/SwinburneCS/2026 semester 1/COS10022_Data_Science_Principles/Untitled 2.md",
+    "Uni Notes/SwinburneCS/2026 semester 1/COS30045_Data_Visualisation/Lecture_8_Chart_Accessibility.md",
+    "Uni Notes/SwinburneCS/2026 semester 1/COS30045_Data_Visualisation/Lecture_7_Psychology_of_Data_Visualisation.md",
+    "Uni Notes/SwinburneCS/2026 semester 1/COS30045_Data_Visualisation/Lecture_2_Chart_Design_and_Visual_Encoding.md",
+    "Pasted image 20260503232834.png",
+    "Pasted image 20260503232810.png",
+    "Uni Notes/SwinburneCS/2026 semester 1/COS30008_Data_Structures_and_Patterns/Lecture_6_7_Tools_for_Algorithm_Analysis_Amortized Analysis.md",
+    "Uni Notes/SwinburneCS/2026 semester 1/COS30008_Data_Structures_and_Patterns/Lecture_8_Abstract_Data_Types_Copy_Move Semantics_and_Queues.md",
+    "Uni Notes/SwinburneCS/2026 semester 1/COS30045_Data_Visualisation/Lecture_6_Histograms_and_D3_Interactivity.md",
+    "Uni Notes/SwinburneCS/2026 semester 1/COS10022_Data_Science_Principles/Lecture_3_Model_Planning_and_Clustering.md",
+    "Uni Notes/SwinburneCS/2026 semester 1/COS10022_Data_Science_Principles/Lecture_2_Linear_and_Logistic_Regressions.md",
+    "Uni Notes/SwinburneCS/2026 semester 1/COS30008_Data_Structures_and_Patterns/Lecture_1-5_Basic_Concepts.md",
+    "Uni Notes/SwinburneCS/2026 semester 1/COS30045_Data_Visualisation/Lecture_5_Line_Arc_Pie_D3.js.md",
+    "Untitled.md",
+    "Uni Notes/SwinburneCS/2026 semester 1/COS10022_Data_Science_Principles/Lecture_1_Introduction_to_Data_Science.md",
+    "Uni Notes/SwinburneCS/2026 semester 1/COS30045_Data_Visualisation/Lecture_4_DOM_SVG_D3.js.md",
+    "Uni Notes/SwinburneCS/2026 semester 1/COS30008_Data_Structures_and_Patterns/Lecture_1_2-C++_Foundations.md",
+    "Uni Notes/SwinburneCS/2026 semester 1/COS30008_Data_Structures_and_Patterns/Lecture_3.md",
+    "2026-03-25.md",
+    "Uni Notes/SwinburneCS/2026 semester 1/COS30045_Data_Visualisation/Lecture_3_Storytelling_with_Data_and_Data_Privacy.md",
+    "Uni Notes/SwinburneCS/2026 semester 1/COS30045_Data_Visualisation/Lecture_12.md",
+    "Assets/TNE10006_Unit_Outline.pdf",
+    "Assets",
+    "Uni Notes/SwinburneCS/2026 semester 1/COS30045_Data_Visualisation",
+    "Uni Notes/SwinburneCS/2026 semester 1/COS30008_Data_Structures_and_Patterns",
+    "Uni Notes/SwinburneCS/2026 semester 1/COS10022_Data_Science_Principles",
+    "Uni Notes/SwinburneCS/2026 semester 1",
+    "Uni Notes/SwinburneCS/Units",
+    "Uni Notes/SwinburneCS",
+    "Uni Notes"
+  ]
+}
