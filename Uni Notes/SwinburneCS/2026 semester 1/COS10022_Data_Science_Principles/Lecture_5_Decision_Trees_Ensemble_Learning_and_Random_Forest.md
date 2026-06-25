@@ -2,60 +2,73 @@
 
 ### What is a Decision Tree?
 ![[Pasted image 20260325154819.png]]
-A **decision tree** is a supervised machine learning model that predicts or classifies outcomes by recursively splitting data into subsets based on feature conditions, forming a atree-like structure of decisions leading to a result.
+A **decision tree** is a supervised learning model that predicts or classifies outcomes based on input features by recursively splitting a dataset into progressively purer subsets.
 
-In simple terms: it is a flowchart where each question narrows down the answer until you reach a final label.
+In simple terms: it is a flowchart-like structure where each internal node asks a question about a feature, each branch represents an answer, and each leaf holds a final prediction.
 
-Think of it like: a medical diagnosis checklist - a doctor asks "do you have a fever?", then "do you have a cough?", each answer leading to the next question until they reach a diagnosis.
+Think of it like: a game of Twenty Questions where every answer narrows down the possibilities until only one remains.
 
-Why it matters: decision trees are highly interpretable, handle both discrete and continuous data, and form the foundation for more powerful ensemble methods like Random Forest.
+Why it matters: decision trees are one of the most interpretable ML models and form the backbone of powerful ensemble methods like Random Forest and gradient boosting, which appear everywhere in industry and competitions.
 
 ### Tree Anatomy
 ![[Pasted image 20260325155122.png]]
-The structure of a decision tree maps closely to a real tree. The **root node** is the starting point, sitting at the top of the tree. It represents the best initial question to ask. A **trunk** connects the root to the rest of the structure. From there, internal nodes called **decision nodes** represent further questions asked about the data. Each decision node splits into branches based on the answer to a condition. Finally, **terminal nodes** (also called **leaf nodes**) sit at the bottom and represent the final prediction or classification.
+A decision tree is built from three kinds of nodes:
+- The **root node** is the top-level split representing the most informative feature in the dataset.
+- **Decision nodes** (also called internal nodes) sit in the middle and represent further splits on features.
+- **Leaf nodes** (also called terminal nodes) sit at the bottom and contain the final output class or value. Every path from root to leaf encodes a decision rule.
 
-### Tree Construction: Splitting Criteria
+### Splitting Criteria
 ![[Pasted image 20260325161947.png]]
-The core challenge in building a tree is choosing which feature to split on at each node. The goal is to split the data so that resulting subsets are as **pure** as possible, meaning each subset is dominated by a single class. Three main criteria measure this.
+The central challenge in building a tree is deciding which feature to split on at each node. The goal is to produce child subsets that are as **pure** as possible, meaning they contain predominantly one class. Three main criteria are used.
 
-**Entropy** comes from information theory and measures the disorder or uncertainty in a set. A fully mixed group has high entropy; a fully pure group has entropy of zero.
+#### Entropy
+**Entropy** measures the level of uncertainty or impurity in a dataset. A node containing only one class has entropy 0 (perfectly pure), while a node with an even mix of classes has maximum entropy.
 
 In this formula, $Η$ (Greek capital letter eta) defines the entropy, $pi$ indicates the probability mass function, and $n$ is the number of output states.
 $$\text{H}(p) = -\sum_{i=1}^{n} p_i \log_2 p_i \quad \text{for } p \in \mathbb{Q}^n$$
 
 ![[Pasted image 20260325155918.png]]
 For example, a group of 7 positives and 6 negatives out of 13 has:
-$$\text{H}(p) = -\frac{7}{13}\log_2\frac{7}{13} - \frac{6}{13}\log_2\frac{6}{13} = 0.995$$
+$$\text{H}(p) = -\frac{7}{13}\log_2\frac{7}{13} - \frac{6}{13}\log_2\frac{6}{13} \approx 0.995$$
 
 A perfectly pure set gives $\text{H}(p) = 0$. Note that entropy can exceed 1 when there are more than two classes, as shown in the three-class ball example where $\text{H}_0 = 1.55$.
 ![[Pasted image 20260325160244.png]]
 #### Information Gain
-**Information Gain** (used in the [**ID3**](https://en.wikipedia.org/wiki/ID3_algorithm) algorithm) is the reduction in entropy after a split. It is calculated as:
+**Information Gain** (used in the [**ID3**](https://en.wikipedia.org/wiki/ID3_algorithm) algorithm) is the difference between original entropy and weighted entropy after split. It is calculated as:
 $$\text{Gain} = \text{H}_0 - (w_1 \text{H}_1 + w_2 \text{H}_2)$$
-where $w_1$ and $w_2$ are the proportional sizes of the two subsets. The algorithm always selects the feature with the highest gain for the next split. A known disadvantage of ID3 is that it prefers features with many distinct values (high cardinality), which can overfit.
+where $w_1$ and $w_2$ are the proportional sizes of the two subsets. **The algorithm always selects the feature with the highest gain for the next split**. A known disadvantage of ID3 is that it prefers features with many distinct values (high cardinality), which can overfit.
 
-#### Gain Ratio
-**Gain Ratio** (used in [**C4.5**](https://en.wikipedia.org/wiki/C4.5_algorithm), the successor to ID3) corrects for this bias by normalising the gain against a penalty called SplitInfo:
-$$\text{GainRatio} = \frac{\text{Gain}}{\text{SplitInfo}} = \frac{\text{H}_0 - \sum_{i=1}^{k} w_i \text{H}_i}{\sum_{i=1}^{k} w_i \log_2 w_i}$$
+#### Gain Ratio (C4.5)
+**Gain Ratio** is an extension of information gain that corrects for the bias toward high-cardinality features. It normalises information gain by the split information, which penalises features that produce many small branches.
+$$\text{Gain Ratio} = \frac{\text{Gain}}{\text{SplitInfo}}$$
 
-#### Gini Impurity
-**Gini Impurity** (used in the **CART** algorithm) is an alternative purity measure. For a node, it is defined as:
+The **C4.5** algorithm uses gain ratio, making it more reliable when features vary widely in the number of distinct values.
 
-$$\text{Gini}_{\text{impurity}}(p) = 1 - \sum_{i=1}^{n} p_i^2$$
+#### Gini Index (CART)
+The **Gini Index** measures impurity using squared probabilities rather than logarithms, making it computationally cheaper as it only use multiplication and addition.
 
-#### Gini index
-The **Gini index** for a split is the weighted sum of child node impurities:
+$$\text{Gini} = 1 - \sum_i p_i^2$$
 
-$$\text{Gini}_{\text{index}} = \sum_{i=1}^{n} w_i \cdot \text{Gini}_{\text{impurity}_i}$$
+A Gini of 0 means the node is pure. The **CART** algorithm selects splits that minimise the weighted Gini index across child nodes. It has no obvious bias toward high-cardinality features.
 ![[Pasted image 20260325161642.png]]
 [**CART**](https://www.geeksforgeeks.org/machine-learning/cart-classification-and-regression-tree-in-machine-learning/) selects the split with the lowest Gini index. In the computer games example, splitting by gender gave a Gini index of 0.42, while splitting by class gave 0.48 - so gender was the better split.
 
+|Aspect|ID3|C4.5|CART|
+|---|---|---|---|
+|Split Criterion|Information Gain|Gain Ratio|Gini Index|
+|Core Idea|Maximise information gain|Correct bias of information gain|Minimise impurity|
+|Bias Problem|Biased toward high-cardinality features|Corrected|No obvious bias|
+|Formula|Gain = H(parent) - sum of weighted child entropies|Gain / SplitInfo|Gini = 1 - sum of squared probabilities|
+
 ### Handling Numerical Features
 ![[Pasted image 20260325162035.png]]
-When a feature is continuous (e.g., wind speed, temperature), you cannot create a separate branch for every possible value. That would produce one-sample leaves with zero impurity but no generalisation power.
+While categorical features split naturally into one branch per value. Numerical features are continuous (e.g., wind speed, temperature), you cannot create a separate branch for every possible value. That would produce one-sample leaves with zero impurity but no generalisation power.
 
 ![[Pasted image 20260325162046.png]]
-The solution is **binary splits**: always split into two groups using a threshold (e.g., "diameter $\leq 8$?"). Candidate thresholds are tested at the midpoints between consecutive sorted values, and the one giving the best purity improvement is selected.
+The solution is **binary splits**: it tests a threshold (e.g. Age < 30) and places each record in the left or right branch. The threshold is typically chosen as the midpoint between adjacent sorted values that best reduces impurity.
+
+### Tree Construction Process
+Building a tree proceeds recursively. At each node, the algorithm evaluates all candidate features and selects the one that best reduces impurity. It then partitions the data and recurses on each subset. The process stops when a stopping condition is met: all records in a node belong to one class, no features remain, or the node has too few records.
 
 ### Decision Tree Example
 **Problem:** Predict if a person buys a product based on Age and Income.
@@ -77,13 +90,21 @@ The solution is **binary splits**: always split into two groups using a threshol
 
 This produces a tree with depth 2, correctly classifying all training records.
 
-### Tree Size and Pruning
+### Overfitting and Pruning
 ![[Pasted image 20260325162108.png]]
-Decision trees are prone to **overfitting**: a tree that is too deep memorises the training data and fails to generalise.
+A very deep tree will eventually place one record per leaf, achieving zero training error but failing to generalise to unseen data. This is **overfitting**: the model memorises training noise instead of learning general patterns. Vice versa, a tree that is too shallow underfits and misses important patterns.
 
-A tree that is too shallow underfits and misses important patterns. The solution is **pruning**, which removes branches that appear to have arisen from noise rather than signal. We have 2 type of pruning:
+The solution is **pruning**, which removes branches that appear to have arisen from noise rather than signal. There are 2 types of pruning:
 - **Pre-pruning** applies stopping conditions during construction, such as requiring a minimum number of samples in any node, or limiting the maximum depth.
-- **Post-pruning** lets the tree grow fully, then removes branches using one of two common methods. _Reduced Error Pruning_ removes a branch if accuracy on the training set does not drop. _Minimum Description Length Pruning_ removes a branch if doing so decreases the total description length, defined as the bits needed to encode the tree structure plus the bits needed to encode its misclassified samples.
+- **Post-pruning** lets the tree grow fully, then removes branches from bottom-up using one of two common methods.
+	- **Reduced Error Pruning** evaluates each internal node on a held-out **validation set (mini test set)**. Does removing this branch hurt accuracy on the validation set? If no, prune it.
+	- **Minimum Description Length (MDL) Pruning** frames pruning as a compression problem. Does removing this branch decrease the total bits needed to describe the tree plus its errors? If yes, prune it. No validation set needed - it is purely a mathematical cost calculation. The total cost of a tree is defined as:
+$$\text{Total Cost} = \text{bits}(\text{tree}) + \text{bits}(\text{errors})$$
+
+| Method                | Criterion                                    |
+| --------------------- | -------------------------------------------- |
+| Reduced Error Pruning | Prune if validation accuracy does not drop   |
+| MDL Pruning           | Prune if bits(tree) + bits(errors) decreases |
 
 ### Key Takeaways
 1. A decision tree splits data recursively using questions about features, aiming to make each subset as pure as possible.
@@ -117,13 +138,16 @@ This matters when your original dataset is small and a single mean or statistic 
 ![[Pasted image 20260325162331.png]]
 The slides demonstrate this with a sample of 8 values whose direct mean is 14.88, compared to a population mean of 12.4. After bootstrapping five subsamples and averaging their means, the calibrated estimate converges to 14.34, closer to the true value.
 
-### Bagging
+### Bagging (Bootstrap Aggregating)
 ![[Pasted image 20260325162408.png]]
 **Bagging** (Bootstrap Aggregation) applies bootstrapping directly to a machine learning algorithm. Multiple versions of the model are trained on different bootstrap samples drawn from the training set.
+
 ![[Pasted image 20260325162426.png]]
 Each model makes its own prediction, and the final output is determined by an **aggregation function**: typically the **statistical mode** (most frequent prediction) for classification tasks, or the **mean** for regression tasks.
 
 Bagging reduces both bias and variance because the averaging process smooths out the individual errors of each model. Training instances can appear in multiple bootstrap samples, which is intentional since it introduces diversity between the models.
+
+**Random Forest** is a direct application of bagging to decision trees. It builds many trees, each trained on a bootstrap sample and each splitting on a random subset of features at every node
 
 ### Boosting
 ![[Pasted image 20260325162447.png]]
@@ -131,7 +155,7 @@ Bagging reduces both bias and variance because the averaging process smooths out
 ![[Pasted image 20260325162504.png]]
 The slides illustrate this with two-class data and three decision stumps (D1, D2, D3). D1 draws a vertical boundary but misclassifies three positive points; those three receive higher weight going into D2. D2 corrects those, but misclassifies three negatives; those gain weight for D3. D3 draws a horizontal boundary targeting those negatives. Combining D1, D2, and D3 (Box 4) produces a complex, strong classifier that none of the weak stumps could achieve alone.
 
-The key distinction from bagging: bagging runs all models in parallel with equal weight; boosting runs models sequentially, and each model shapes what the next one learns.
+The key difference between bagging and boosting is that bagging trains models independently in parallel, while boosting trains them sequentially with each model correcting the last.
 
 ### Stacking
 ![[Pasted image 20260325162529.png]]
@@ -141,11 +165,15 @@ The base models can be fundamentally different types (neural network, decision t
 
 ### Comparing the Three Methods
 
-|Method|Model type|Training order|Combination|Best for|
-|---|---|---|---|---|
-|Bagging|Homogeneous|Parallel|Mode / Average|Reducing variance|
-|Boosting|Homogeneous|Sequential|Weighted|Reducing bias|
-|Stacking|Heterogeneous|Parallel|Meta-model|Maximising accuracy|
+| Method   | Model type    | Training order | Combination    | Best for            |
+| -------- | ------------- | -------------- | -------------- | ------------------- |
+| Bagging  | Homogeneous   | Parallel       | Mode / Average | Reducing variance   |
+| Boosting | Homogeneous   | Sequential     | Weighted       | Reducing bias       |
+| Stacking | Heterogeneous | Parallel       | Meta-model     | Maximising accuracy |
+
+- **Accuracy (Goal):** A qualitative measure of how close your model's predictions are to the true values, encompassing all errors.
+- **Bias (Systematic Error):** The difference between average predictions and the true target, caused by simplifying assumptions (e.g., linear model on non-linear data). High bias leads to underfitting.
+- **Variance (Unstable Error):** How much predictions fluctuate based on different training data samples. High variance means the model is too complex and sensitive, leading to overfitting.
 
 ### Ensemble Learning Example
 **Problem:** Classify an email as spam or not spam. Three weak learners are trained:

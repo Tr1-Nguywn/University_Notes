@@ -1,8 +1,9 @@
 {
-  "cssTheme": "Maple",
+  "cssTheme": "Vicious",
   "interfaceFontFamily": "",
   "textFontFamily": "",
   "accentColor": "",
   "baseFontSize": 16,
-  "baseFontSizeAction": false
+  "baseFontSizeAction": false,
+  "theme": "obsidian"
 }
